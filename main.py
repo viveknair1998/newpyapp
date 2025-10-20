@@ -1,3 +1,5 @@
+import logging
+from azure.monitor.opentelemetry import configure_azure_monitor
 from fastapi import FastAPI, Form, Request, status
 from fastapi.responses import HTMLResponse, FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
