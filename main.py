@@ -2,9 +2,10 @@ import logging
 from azure.monitor.opentelemetry import configure_azure_monitor
 
 
+
 configure_azure_monitor(
 
-  connection_string="InstrumentationKey=8ae92223-6fd7-437f-94a0-fae690b1a688;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=22978c51-b4ad-44e2-bafc-69aaffa10b97",
+  #connection_string="InstrumentationKey=8ae92223-6fd7-437f-94a0-fae690b1a688;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=22978c51-b4ad-44e2-bafc-69aaffa10b97",
 
   #enable_live_metrics=True,
 
@@ -22,7 +23,8 @@ from fastapi.templating import Jinja2Templates
 import uvicorn
 
 
-app = FastAPI()
+
+app = fastapi.FastAPI(__name__)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
