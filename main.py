@@ -1,6 +1,10 @@
 import logging
 from azure.monitor.opentelemetry import configure_azure_monitor
-import fastapi
+from fastapi import FastAPI, Form, Request, status
+from fastapi.responses import HTMLResponse, FileResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+import uvicorn
 
 configure_azure_monitor(
 
@@ -13,12 +17,6 @@ configure_azure_monitor(
 )
 
 logger = logging.getLogger("sunlog")  # Logging telemetry will be collected from logging calls made with this logger and all of it's children loggers.
-from fastapi import FastAPI, Form, Request, status
-from fastapi.responses import HTMLResponse, FileResponse, RedirectResponse
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
-import uvicorn
-
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
